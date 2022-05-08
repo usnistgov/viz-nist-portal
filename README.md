@@ -1,4 +1,4 @@
-# hello-world
+# viz-nist-portal
 
 ## Project setup
 ```
