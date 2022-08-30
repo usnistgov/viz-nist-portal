@@ -16,4 +16,4 @@ RUN tar -zxf /hub-linux-amd64-2.12.4.tgz -C / && rm /hub-linux-amd64-2.12.4.tgz
 RUN /hub-linux-amd64-2.12.4/install
 
 ADD entrypoint.sh /entrypoint.sh
-#ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
