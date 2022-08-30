@@ -37,6 +37,7 @@ yarn install
 yarn run build
 # navigate into the build output directory
 sed -i "s#href=/#href=./#g" dist/index.html
+sed -i "s#src=/#src=./#g" dist/index.html
 cp -r dist/* /tmp/dist/
 # if you are deploying to a custom domain
 # echo 'www.example.com' > CNAME
