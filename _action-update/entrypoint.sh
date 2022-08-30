@@ -28,7 +28,7 @@ git config --global hub.protocol https
 
 git clone --branch gh-pages "https://${BOT_USER}:${BOT_TOKEN}@github.com/usnistgov/viz-nist-portal.git" /tmp/repo
 cd /tmp/repo
-REPO_ROOT=$(pwd)
+ls -al /tmp/repo
 
 #npm install -g @vue/cli
 yarn install
