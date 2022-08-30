@@ -5,7 +5,8 @@ set -e
 # build
 git clone --branch gh-pages "https://${BOT_USER}:${BOT_TOKEN}@github.com/usnistgov/viz-nist-portal.git" /tmp/dist
 
-npm install -g @vue/cli
+#npm install -g @vue/cli
+yarn install
 yarn run build
 # navigate into the build output directory
 cp -r dist/* /tmp/dist/
