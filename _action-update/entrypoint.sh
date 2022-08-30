@@ -27,6 +27,8 @@ git config --global hub.protocol https
 #./deploy.sh
 
 git clone --branch master "https://${BOT_USER}:${BOT_TOKEN}@github.com/usnistgov/viz-nist-portal.git" /tmp/repo
+git clone --branch gh-pages "https://${BOT_USER}:${BOT_TOKEN}@github.com/usnistgov/viz-nist-portal.git" /tmp/dist
+
 cd /tmp/repo
 ls -al /tmp/repo
 
@@ -34,14 +36,14 @@ ls -al /tmp/repo
 yarn install
 yarn run build
 # navigate into the build output directory
-mkdir /tmp/dist
 cp -r dist/* /tmp/dist/
 # if you are deploying to a custom domain
 # echo 'www.example.com' > CNAME
+
 cd /tmp/dist
 git add -A
 git commit -m "deployed at ${DATA_TIMESTAMP}"
-git push -f origin master:gh-pages
+git push -f origin gh-pages
 cd -
 
 exit 0
