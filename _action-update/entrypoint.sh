@@ -26,7 +26,7 @@ git config --global hub.protocol https
 # Run MASTER script
 #./deploy.sh
 
-git clone --branch gh-pages "https://${BOT_USER}:${BOT_TOKEN}@github.com/usnistgov/viz-nist-portal.git" /tmp/repo
+git clone --branch master "https://${BOT_USER}:${BOT_TOKEN}@github.com/usnistgov/viz-nist-portal.git" /tmp/repo
 cd /tmp/repo
 ls -al /tmp/repo
 
