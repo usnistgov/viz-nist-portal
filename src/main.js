@@ -8,6 +8,7 @@ Vue.use(VTree)
 Vue.use(VSelectTree)
 
 Vue.config.productionTip = false
+Vue.config.publicPath = './'
 
 new Vue({
   render: h => h(App)
