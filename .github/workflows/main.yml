@@ -34,7 +34,7 @@ jobs:
     - name: Run NIST Viz Portal update
       uses: ./_action-update
       env:
-        Ci: ""
+        CI: false
         BRANCH_NAME: master
         BOT_USER: usnistgov
         BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
