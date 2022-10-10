@@ -1,4 +1,4 @@
-FROM node:12-stretch
+FROM node:16-stretch
 
 LABEL "com.github.actions.name"="Run Vue build and deploy"
 LABEL "com.github.actions.description"="Run the complete CI/CD pipeline"
