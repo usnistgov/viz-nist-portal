@@ -30,12 +30,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     
-    - run: CI=false
-
     # Runs a single command using the runners shell
     - name: Run NIST Viz Portal update
       uses: ./_action-update
       env:
+        Ci: ""
         BRANCH_NAME: master
         BOT_USER: usnistgov
         BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
