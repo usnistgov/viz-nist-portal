@@ -34,11 +34,12 @@ ls -al /tmp/repo
 
 #npm install -g @vue/cli
 yarn install
-yarn run build
+yarn run build > /dev/null
 # navigate into the build output directory
 sed -i "s#href=/#href=./#g" dist/index.html
 sed -i "s#src=/#src=./#g" dist/index.html
 cp -r dist/* /tmp/dist/
+cp data.json /tmp/dist/
 # if you are deploying to a custom domain
 # echo 'www.example.com' > CNAME
 
