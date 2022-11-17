@@ -14,7 +14,7 @@
 <script>
 import {Plotly} from 'vue-plotly'
 
-const co = {
+/*const co = {
   x: [0.0,
       25.0,
       50.0,
@@ -1190,7 +1190,158 @@ const nb = {
   ],
   type: 'scatter',
   name: 'Nb/um'
+};*/
+
+const temp_liqu_co = {
+  x: [
+    71.000,
+    52.000,
+    49.000,
+    47.400,
+    71.000,
+    46.900,
+    45.900,
+    48.400,
+    48.900,
+    73.500,
+    72.000,
+    56.600,
+    52.000,
+    64.300,
+    52.000,
+    55.800,
+    72.000,
+    51.000
+  ],
+  y: [
+    1412.5,
+    1384.6,
+    1410.5,
+    1403.8,
+    1477.6,
+    1373.7,
+    1374.0,
+    1371.2,
+    1402.8,
+    1487.0,
+    1481.9,
+    1441.0,
+    1402.6,
+    1439.0,
+    1403.0,
+    1408.1,
+    1376.8,
+    1418.6
+  ],
+  type: 'scatter',
+  mode: 'markers',
+  marker : {
+    color: 'green',
+  },
+  name: 'Liquidus'
 };
+
+const temp_sold_co = {
+  x: [
+    71.000,
+    52.000,
+    49.000,
+    47.400,
+    71.000,
+    46.900,
+    45.900,
+    48.400,
+    48.900,
+    73.500,
+    72.000,
+    56.600,
+    52.000,
+    64.300,
+    52.000,
+    55.800,
+    72.000,
+    51.000
+  ],
+  y: [
+    1350.5,
+    1318.4,
+    1358.9,
+    1335.9,
+    1454.3,
+    1304.2,
+    1298.4,
+    1298.4,
+    1337.1,
+    1459.4,
+    1457.6,
+    1420.0,
+    1354.6,
+    1418.0,
+    1344.1,
+    1329.8,
+    1300.4,
+    1366.3
+  ],
+  type: 'scatter',
+  mode: 'markers',
+  marker : {
+    color: 'black',
+    symbol: 'square'
+  },
+  name: 'Solidus'
+};
+
+const temp_solv_co = {
+  x: [
+    71.000,
+    52.000,
+    49.000,
+    47.400,
+    71.000,
+    46.900,
+    45.900,
+    48.400,
+    48.900,
+    73.500,
+    72.000,
+    56.600,
+    52.000,
+    64.300,
+    52.000,
+    55.800,
+    72.000,
+    51.000
+  ],
+  y: [
+    1134.3,
+    1126.2,
+    1217.4,
+    1238.3,
+    1043.2,
+    1268.4,
+    1268.8,
+    1264.9,
+    1232.4,
+    977.85,
+    1016.5,
+    978.00,
+    1183.2,
+    958.00,
+    1163.4,
+    1037.2,
+    1057.7,
+    1167.2
+  ],
+  type: 'scatter',
+  mode: 'markers',
+  marker : {
+    color: 'blue',
+    symbol: 'diamond'
+  },
+  name: 'Solvus'
+};
+
+//data: [co, fe, cr, v, ti, mo, nb],
 
 export default {
   name: 'HelloWorld',
@@ -1199,11 +1350,11 @@ export default {
   },
   data () {
     return {
-      data: [co, fe, cr, v, ti, mo, nb],
-      attr: { displayModeBar: true },
+      data: [temp_liqu_co, temp_sold_co, temp_solv_co],
+      attr: { displayModeBar: true},
       layout: {
         plot_bgcolor: '#d3d3d3',
-        paper_bgcolor: '#d3d3d3',
+        paper_bgcolor: '#d3d3d3'
       },
       searchword: '',
       initSelected: [],
@@ -1216,19 +1367,20 @@ export default {
           expanded: true,
           children: [{
             title: 'PhaseData: phasesdata.nist.gov',
+            expanded: true,
             children: [{
               title: 'TracerDiffusivity'
             }, {
               title: 'MaterialDescription'
             }, {
               title: 'Interdiffusion',
-              expanded: true,
+              expanded: false,
               children: [{
                 title: 'Records',
-                expanded: true,
+                expanded: false,
                 children: [{
                   title: 'GE-DiffusionCouple-IN100-IN718.50eb2ac0',
-                  expanded: true,
+                  expanded: false,
                   children: [{
                     title: 'Distance'
                   }, {
@@ -1257,7 +1409,35 @@ export default {
             }, {
               title: 'Lattice-MisFit'
             }, {
-              title: 'TransitionTemperatures'
+              title: 'TransitionTemperatures',
+              expanded: true,
+              children: [{
+                title: 'Records',
+                expanded: true,
+                children: [{
+                  title: 'TransitionTemp',
+                  expanded: true,
+                  children: [{
+                    title: 'Distance'
+                  }, {
+                    title: 'Co'
+                  }, {
+                    title: 'Fe'
+                  }, {
+                    title: 'Cr'
+                  }, {
+                    title: 'V'
+                  }, {
+                    title: 'Ti'
+                  }, {
+                    title: 'Mo'
+                  }, {
+                    title: 'Mb'
+                  }]
+                }, {
+                  title: 'GE-DiffusionCouple-R95-R88.7231f260'
+                }]
+              }]
             }, {
               title: 'References'
             }, {
@@ -1340,12 +1520,9 @@ export default {
       let titleClass = node.selected ? 'node-title node-selected' : 'node-title'
       if (node.searched) titleClass += ' node-searched'
       return <span>
-        <button class="treebtn1" onClick={() => this.$refs.tree1.addNode(node, {title: 'sync node'})}>+</button>
          <span class={titleClass} domPropsInnerHTML={node.title} onClick={() => {
            this.$refs.tree1.nodeSelected(node)
          }}></span>
-      <button class="treebtn2" onClick={() => this.asyncLoad1(node)}>async</button>
-      <button class="treebtn3" onClick={() => this.$refs.tree1.delNode(node, parent, index)}>delete</button>
       </span>
     },
     async asyncLoad1 (node) {
